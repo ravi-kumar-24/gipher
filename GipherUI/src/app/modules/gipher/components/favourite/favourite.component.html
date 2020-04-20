@@ -1,0 +1,9 @@
+<div class="container">
+    <app-card *ngFor='let gif of gifs'
+    [gif]='gif'
+    [fData]='fData'
+    (deleteGifFromFavourite)='deleteGifFromFavourite($event)'
+    (addDescription2Gif)='addDescription2Gif($event)'
+    >
+    </app-card>
+</div>

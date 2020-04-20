@@ -1,0 +1,56 @@
+*{
+    border-radius: 0px;
+}
+mat-card{
+    display:flex;
+    flex-direction:column;
+    height:50vh;
+    width: 40vw;
+    text-align:center;
+    background-color: #f2f2f2;
+    margin: auto;
+    margin-bottom: 10vh;
+    margin-top:5vh;
+    border-radius: 0px;
+}
+
+mat-card-title{
+    color:#4295f5;
+    font-size: 1.2em;
+    font-family: 'Acme', sans-serif;
+    padding-left: 15vw;
+    padding-top:3vh;
+
+}
+
+.my-form{
+    display: flex;
+    flex-direction: column;
+    width:20vw;
+    margin:auto;
+}
+
+.label{
+    color:#4295f5;
+    font-size: 1.2em;
+    font-family: 'Acme', sans-serif;
+}
+
+mat-icon{
+    margin-right: 1em;
+    color:#4295f5;
+
+}
+
+.matInputdata{
+    color:#4295f5;
+    font-size: 1.2em;
+    font-family: 'Acme', sans-serif;
+}
+
+.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button{
+    background: #4295f5;
+    color:#fff;
+    font-size: 1.2em;
+    font-family: 'Acme', sans-serif;
+}

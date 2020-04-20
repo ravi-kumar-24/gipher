@@ -1,0 +1,106 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports: 
+      - 15672:15672
+      - 5672:5672
+    container_name: rabbitmqCon
+    healthcheck:
+      test: "exit 0"
+
+  mongo:
+    image: mongo:3.2-jessie
+    ports:
+      - 27017:27017
+    container_name: mongoCon
+    network_mode: host
+    healthcheck:
+      test: "exit 0"
+
+  mysql:
+    image: mysql:5.5
+    ports: 
+      - 3306:3306
+    container_name: mysqlCon
+    network_mode: host
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: UserDB
+      MYSQL_USER: app_root
+      MYSQL_PASSWORD: root
+    healthcheck:
+      test: "exit 0"
+
+  zuul:
+    image: kailashadhikariibm/sba-zuul:v1
+    restart: always
+    ports:
+      - 9090:9090
+    container_name: zuulgatewayCon
+    depends_on:
+      - eureka
+    network_mode: host
+    healthcheck:
+      test: "exit 0"
+
+  eureka:
+    image: kailashadhikariibm/sba-eureka:v1
+    restart: always
+    ports:
+      - 9999:9999
+    container_name: eurekadiscoveryCon
+    network_mode: host
+    healthcheck:
+      test: "exit 0"
+
+  accountmanager: 
+    image: kailashadhikariibm/sba-accountmanager:v1
+    restart: always
+    network_mode: host
+    container_name: accountmanagerCon
+    depends_on:
+      - mysql
+      - rabbitmq
+      - eureka
+    ports: 
+      - 1002:1002
+    healthcheck:
+      test: "exit 0"
+
+  giphermanager: 
+    image: kailashadhikariibm/sba-giphermanager:v1
+    restart: always
+    network_mode: host
+    container_name: giphermanagerCon
+    depends_on:
+      - mongo
+      - rabbitmq
+      - eureka
+    ports: 
+      - 1000:1000
+    healthcheck:
+      test: "exit 0"
+
+  gipherrecommendations: 
+    image: kailashadhikariibm/sba-recommendationsmanager:v1
+    restart: always
+    network_mode: host
+    container_name: gipherrecommendationsCon
+    depends_on:
+      - mongo
+      - rabbitmq
+      - eureka
+    ports: 
+      - 1001:1001
+    healthcheck:
+      test: "exit 0"
+
+  angular:
+    image: kailashadhikariibm/sba-frontend:v1
+    network_mode: host
+    container_name: front-end
+    ports: 
+      - 8080:8080
+    healthcheck:
+      test: "exit 0" 

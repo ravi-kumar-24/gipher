@@ -1,0 +1,46 @@
+.mat-toolbar{
+    background-color: #2196f3;
+    height:20vh;
+    display: flex;
+    padding:1.5vh;
+}
+
+.image-class{
+    height: 10vh;
+    margin-right: auto;
+}
+
+.mat-button{
+    font-family: 'Acme', sans-serif;
+    font-size: 1.2em;
+}
+
+.mat-menu-items{
+    font-family: 'Acme', sans-serif;
+    font-size: 1.2em;
+}
+
+.mat-form-field{
+    padding-top: 4vh;
+    color:#fff;
+}
+
+.matInput{
+    color:#fff;
+}
+
+.label{
+    font-size:1em;
+    font-family: 'Acme' sans-serif;
+    color:#fff;
+}
+
+
+.mat-form-field-appearance-outline .mat-form-field-outline{
+    color: #fff !important;
+}
+
+.search-input{
+    width: 35vw !important;
+    padding-right: 5vw !important;
+}

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zuul
+
+server:
+  port: 9090
+
+
+zuul:
+  routes:
+    accountmanager:
+      url: http://localhost:1002
+    giphermanager:
+      url: http://localhost:1000
+    gipherrecommendations:
+      url: http://localhost:1001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: routes, filters
